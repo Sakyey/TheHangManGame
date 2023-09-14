@@ -44,14 +44,14 @@ namespace Test
             //Declaring the variable j to draw out the hangman&
             int j = 4;
 
-            //Loop för programmet
+            //Start of loop
             while (lose==false)
             {
                 Console.Clear();
 
                 Console.WriteLine("Already guessed characters: "+ string.Join(", ", alrGuessed.ToArray()));
                 Console.WriteLine("Lives left: " + j);
-                //Utritandet av gubben
+                //Drawing out the the hanging man
                 if (j == 4)
 
 
@@ -134,7 +134,7 @@ namespace Test
                 bool correctWordGuess = false;
                 
                 
-                Console.WriteLine(guessBuilder);
+                Console.WriteLine("The word is "+ guessBuilder);
                 Console.Write("Guess a letter: ");
                 
                 string wordGuess = Console.ReadLine().ToUpper();
@@ -167,16 +167,18 @@ namespace Test
                 //Checking if the user input is the same as the secretWord
                 if (wordGuess == secretWord)
                 {
-                    Console.Clear();
+
                         Console.WriteLine("Congratulations, you guessed right! The word was " + secretWord);
+                        Thread.Sleep(2000);
                         break;
                 }
                
                 //Checking if the guessBuilder (the changed guessString) has all of the letters of the secretWord --> win con.
                     if (secretWord.Equals(guessBuilder.ToString()))
                     {
-                    Console.Clear();
+
                         Console.WriteLine("Congratulations, you guessed right! The word was " + secretWord);
+                        Thread.Sleep(2000);
                    
                         break;
                     }
@@ -186,7 +188,7 @@ namespace Test
 
 
                 
-            }
+            } //End of loop
         }
     }
 }
