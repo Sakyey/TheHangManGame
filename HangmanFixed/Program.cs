@@ -126,6 +126,7 @@ namespace Test
                     Console.WriteLine(guessString);
                     Console.WriteLine("Too bad, you lose!. The word was: " + secretWord);
                     lose = true;
+                    Thread.Sleep(2000);
                     break;
                 }
 
@@ -138,7 +139,6 @@ namespace Test
                 Console.Write("Guess a letter: ");
                 
                 string wordGuess = Console.ReadLine().ToUpper();
-                alrGuessed.Add(wordGuess);
 
                 StringBuilder Sb1 = new StringBuilder();
                
@@ -157,12 +157,24 @@ namespace Test
 
                     }
                 }
+                //checking if a letter is there
                 else
-                {
-                    Console.WriteLine("Incorrect letter");
-                    j--;
-                Thread.Sleep(1000);
+                {   
+                       if(alrGuessed.Contains(wordGuess))
+                       {
+                         Console.WriteLine("You've already guessed that");
+                        Thread.Sleep(1000);
+                       }
+                       else
+                       {
+                         Console.WriteLine("Incorrect letter");
+                         j--;
+                         Thread.Sleep(1000);
+
+                       }    
+                     
                 }
+                       alrGuessed.Add(wordGuess);
                 
                 //Checking if the user input is the same as the secretWord
                 if (wordGuess == secretWord)
